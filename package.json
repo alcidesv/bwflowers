@@ -1,0 +1,24 @@
+{
+  "name": "bwflowers",
+  "version": "0.0.1",
+  "description": "Ready random thumbnails",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dsign/bwflowers.git"
+  },
+  "author": "Alcides Viamontes Esquivel",
+  "license": "BSD",
+  "bugs": {
+    "url": "https://github.com/dsign/bwflowers/issues"
+  },
+  "homepage": "https://github.com/dsign/bwflowers",
+  "devDependencies": {
+    "typescript": "^1.1.0-1"
+  },
+  "dependencies": {
+  }
+}
