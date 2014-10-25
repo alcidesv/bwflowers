@@ -30,12 +30,28 @@ module bwflowers {
             ctx.stroke();
         },
         function (ctx:CanvasRenderingContext2D): void {
+            ctx.save();
+            ctx.scale(0.3, 1.5);
+            ctx.arc(0.0, 0.5, 0.5, 0.0, Math.PI*2);
+            ctx.fill();
+            ctx.restore();
+        },
+        function (ctx:CanvasRenderingContext2D): void {
             ctx.beginPath();
             ctx.moveTo(0, 0);
             ctx.lineTo(-0.8, 0.8);
             ctx.lineTo(0.8, 0.8);
             ctx.closePath();
             ctx.fill();
+        },
+        function (ctx:CanvasRenderingContext2D): void {
+            ctx.beginPath();
+            ctx.moveTo(0, 0);
+            ctx.lineTo(-0.5, 0.5);
+            ctx.lineTo(0.0, 1.0);
+            ctx.lineTo(0.5, 0.5);
+            ctx.closePath();
+            ctx.stroke();
         }
     ];
 
