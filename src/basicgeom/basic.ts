@@ -15,6 +15,11 @@ module basicgeom {
         constructor(public x:number, public y:number) {
         }
 
+        static create(x:number, y:number): Point2D
+        {
+            return new Point2D(x,y);
+        }
+
         public asCssTranslation(unit?:string):string {
             unit = unit || "px";
             return "translate( " + String(lowerPrecission(this.x)) + unit +
@@ -31,6 +36,69 @@ module basicgeom {
             var dx = this.x;
             var dy = this.y;
             return Math.sqrt(dx * dx + dy * dy);
+        }
+
+        public add(other: Point2D): Point2D {
+            return new Point2D(
+                this.x + other.x,
+                this.y + other.y
+            );
+        }
+
+        public subtract(other: Point2D): Point2D{
+            return new Point2D(
+                this.x - other.x,
+                this.y - other.y
+            );
+        }
+
+        public negative(): Point2D {
+            return new Point2D(
+                - this.x,
+                - this.y
+            )
+        }
+
+        public divide(scalar:number): Point2D
+        {
+            return new Point2D(
+                this.x / scalar,
+                this.y / scalar
+            )
+        }
+
+        public multiply(scalar: number): Point2D
+        {
+            return new Point2D(
+                this.x * scalar,
+                this.y * scalar
+            )
+        }
+
+        // Actually treats the point as a vector.. this denotes a counter-clockwise
+        // rotation
+        public rotateLeft(angle:number): Point2D
+        {
+            var cs = Math.cos(angle);
+            var ss = Math.sin(angle);
+            var new_x : number = cs*this.x - ss*this.y ;
+            var new_y : number = ss*this.x + cs*this.y;
+            return new Point2D(new_x, new_y);
+        }
+
+        public rotateRight(angle:number): Point2D
+        {
+            return this.rotateLeft(-angle);
+        }
+
+        public toAbsoluteLength(ll?: number): Point2D;
+        public toAbsoluteLength(ll: number): Point2D
+        {
+            if (ll == null){
+                ll = 1.;
+            }
+            var d = this.distanceToOrigin();
+            return this.divide(d/ll);
         }
     }
 
@@ -57,6 +125,7 @@ module basicgeom {
             result.coord_array[7] = 0;
             return result;
         }
+
     }
 
     export class CirclePositioner {
